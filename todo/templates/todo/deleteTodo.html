@@ -1,0 +1,9 @@
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<p>you deleted {{item}}</p>
+
+<a href="{% url 'todolist' %}">ยกเลิก</a>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <input type="submit">
+</form>

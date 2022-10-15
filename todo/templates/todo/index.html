@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        <h4>title</h4>
+        <p>{{form.title}}</p>
+        <h4>description</h4>
+        <p>{{form.description}}</p>
+        <h4>deadline</h4>
+        <p>{{form.deadline}}</p>
+        <h4>Done</h4>
+        <p>{{form.done}}</p>
+        <input type="submit">
+    </form>
+    <div>
+        {% for todo in todos %}
+        <a href="{% url 'updateTodo' todo.id %}">update</a>
+        <a href="{% url 'deleteTodo' todo.id %}">delete</a>
+        {% if todo.done == True %}
+        <p>{{todo}}</p>
+        {% else %}
+        <p>{{todo}}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+
+</html>

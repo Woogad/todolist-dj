@@ -1,0 +1,16 @@
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<div>
+    <h3>Update</h3>
+    <form method="post" action="">
+        {% csrf_token %}
+        <h4 class="text-yellow-300">title</h4>
+        <p class="border-solid border-2 border-sky-500">{{form.title}}</p>
+        <h4>description</h4>
+        <p>{{form.description}}</p>
+        <h4>deadline</h4>
+        <p>{{form.deadline}}</p>
+        <h4>Done</h4>
+        <p>{{form.done}}</p>
+        <input type="submit">
+    </form>
+</div>
