@@ -6,28 +6,56 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <title>Document</title>
 </head>
+<style>
+    a:link {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:visited {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:active {
+        text-decoration: underline;
+        color: black;
+    }
+</style>
 
 <body>
+    <h1>สร้างรายการ Todo</h1>
     <form method="post" action="">
         {% csrf_token %}
-        <h4>title</h4>
+        <h4>หัวข้อ</h4>
         <p>{{form.title}}</p>
-        <h4>description</h4>
+        <h4>คำอธิบาย</h4>
         <p>{{form.description}}</p>
-        <h4>deadline</h4>
+        <h4>หมดเวลา</h4>
         <p>{{form.deadline}}</p>
-        <h4>Done</h4>
+        <h4>เสร็จหรือไม่?</h4>
         <p>{{form.done}}</p>
-        <input type="submit">
+        <input style="font-size: 1.2em;" type="submit" value="ยืนยัน">
     </form>
-    <div>
-        {% for todo in todos %}
-        <a href="{% url 'updateTodo' todo.id %}">update</a>
-        <a href="{% url 'deleteTodo' todo.id %}">delete</a>
+    <div style="margin: 25px 0px; width: 100%; height: 2px; background-color: black;"></div>
+    <br>
+    <br>
+    {% for todo in todos %}
+    <div style="margin: 20px; padding: 30px 0px;">
+
+        <a style="margin: 0px 5px;" href="{% url 'updateTodo' todo.id %}">แก้ไข</a>
+        <a href="{% url 'deleteTodo' todo.id %}">ลบ</a>
         {% if todo.done == True %}
-        <p>{{todo}}</p>
+        <a href="{% url 'getTodo' todo.id %}"
+            style=" font-size: 1.875em; margin: 25px; text-decoration: line-through;">{{todo.title}}</a>
+        <p style="font-size: 1.2em; border-style: solid; margin: 25px; "> หมดเวลา: {{todo.deadline}}</p>
         {% else %}
-        <p>{{todo}}</p>
+        <a href="{% url 'getTodo' todo.id %}" style="font-size: 1.875em; margin: 25px;">{{todo.title}}</a>
+        <p style="font-size: 1.2em; border-style: solid; margin: 25px;"> หมดเวลา: {{todo.deadline}}</p>
         {% endif %}
     </div>
     {% endfor %}

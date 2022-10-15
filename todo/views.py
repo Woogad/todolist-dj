@@ -34,3 +34,9 @@ def deleteTodo(req, pk):
         return redirect("/")
     context = {'item': item}
     return render(req, 'todo/deleteTodo.html', context)
+
+
+def getTodo(req, pk):
+    todo = Todo.objects.get(id=pk)
+    context = {'todo': todo}
+    return render(req, 'todo/todo.html', context)

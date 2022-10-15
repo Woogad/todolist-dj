@@ -1,0 +1,8 @@
+<h3>หัวข้อ: {{todo.title}}</h3>
+<p>คำอธิบาย: ่{{todo.description}}</p>
+<p>หมดเวลา: {{todo.deadline}}</p>
+{% if todo.done %}
+<p>เสร็จแล้ว</p>
+{% else %}
+<p>ยังไม่เสร็จ</p>
+{% endif %}
